@@ -1,13 +1,18 @@
 Cromwell De Guzman, Beatrice Yu
+
 Professor Tyler Coleman
+
 CMPM 169: Creative Coding
+
 7 June 2024
 
 # Final Project
 
 ## Final Video
 Submit a link or video file for your final showcase. It must be under 2 minutes long.
+
 The video must show your project in a functioning state.
+
 You can also show the work done on it in a "making of" format, as well as including your artistic statement and postmortem, as long as its under 2 minutes.
 
 ## Project Link
