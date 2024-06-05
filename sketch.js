@@ -5,9 +5,11 @@ let c, increase;
 let s, n; 
 let input, inputsong; 
 let rotation, r, turn; 
-let w = 800; 
+let w = 1200; 
 let h = 800; 
-let sec; 
+let sec;
+let audio;
+let particles = [];
 
 let lyrics = [
   // cat & dog
@@ -622,7 +624,27 @@ function draw() {
   if (turn == true) {
     r = -r; 
     turn = false; 
-  } 
+  }
+
+ // particle shooter
+ push();
+ let numParticles = map(rms, 0, 0.3, 0, 1);
+ for (let i = 0; i < numParticles; i++) {
+    if(rms > 0.5) {
+        particles.push(new Particle());
+    }
+ }
+
+ for (let i = particles.length - 1; i >= 0; i--) {
+    particles[i].update();
+    particles[i].display();
+
+    // Remove particles that are out of bounds
+    if (particles[i].isOffScreen()) {
+        particles.splice(i, 1);
+    }
+ }
+ pop();
   
   // draw flower
   push();
@@ -639,7 +661,7 @@ function draw() {
   // add instruction text 
   push(); 
   // colorMode(RGB); 
-  textFont('courier new'); 
+  textFont('arial'); 
   textSize(18); 
   fill(0, 0, 255); 
   textAlign(LEFT);
@@ -661,13 +683,38 @@ function draw() {
   }
   for (var x = 0; x < l.length; x++) {
     if (sec >= l[x].start && sec <= l[x].stop) {
-      textFont('courier new'); 
-      textSize(18); 
+      textFont('Brush Script MT'); 
+      textSize(50); 
       fill(0, 0, 255); 
       textAlign(CENTER); 
       text(l[x].lyrics, w / 2, h / 2); 
     }
   }
+}
+
+class Particle {
+    constructor() {
+        this.pos = createVector(width / 2, height / 2);
+        this.vel = p5.Vector.random2D().mult(random(2, 5));
+        this.size = random(5, 10);
+        this.lifespan = 255;
+    }
+
+    update() {
+        this.pos.add(this.vel);
+        this.lifespan -= 2;
+        this.size+=0.15;
+    }
+
+    display() {
+        noStroke();
+        fill(c, 255, 255, Math.random(0, 255), this.lifespan);
+        ellipse(this.pos.x, this.pos.y, this.size);
+    }
+
+    isOffScreen() {
+        return (this.pos.x < 0 || this.pos.x > width || this.pos.y < 0 || this.lifespan <= 0);
+    }
 }
 
 function keyPressed() {

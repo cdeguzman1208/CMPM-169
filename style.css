@@ -1,16 +1,24 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #000;
-    color: #fff;
-    font-family: Arial, sans-serif;
-  }
-  
-  div {
-    position: absolute;
-    top: 90%;
-    width: 100%;
-  }  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: black;
+  color: #fff;
+  font-family: arial, sans-serif;
+}
+
+#visualizer {
+  position: absolute;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+#controls {
+  position: absolute;
+  top: 715px;
+  right: 100px;
+}
