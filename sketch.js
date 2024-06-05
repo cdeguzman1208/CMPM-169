@@ -859,16 +859,18 @@ function draw() {
   }
   
   // draw flower
-  push();
-  translate(w / 2, h / 2); 
-  rotation += r;
-  rotate(rotation);
-  noStroke();
-  for (var r1 = 0; r1 < 10; r1++) {
-    ellipse(0, rms * 400, 10 + rms * 300, 20 + rms * 600); 
-    rotate(36);
+  if (f == true) {
+    push();
+    translate(w / 2, h / 2); 
+    rotation += r;
+    rotate(rotation);
+    noStroke();
+    for (var r1 = 0; r1 < 10; r1++) {
+      ellipse(0, rms * 400, 10 + rms * 300, 20 + rms * 600); 
+      rotate(36);
+    }
+    pop();
   }
-  pop();
   
   // add instruction text 
   push(); 
