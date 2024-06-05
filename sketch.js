@@ -565,11 +565,12 @@ let lyrics = [
 function preload(){
   song1 = loadSound('audio/Cat & Dog (English Version).mp3');
   song2 = loadSound('audio/Skrillex & Diplo - Mind feat. Kai.mp3'); 
+  song3 = loadSound('audio/Owl City - Fireflies.mp3');
 }
 
 function setup() {
-  createCanvas(800, 800);
-  s = [song1, song2, song3, song4]; 
+  createCanvas(w, h);
+  s = [song1, song2, song3]; 
   n = 0; 
   song = s[n]; 
   song.play();
