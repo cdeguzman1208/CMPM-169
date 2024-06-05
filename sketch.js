@@ -835,16 +835,20 @@ function draw() {
     r = -r; 
     turn = false; 
   }
-
- // particle shooter
+  
+  // particle shooter
   if (p == true) {
-   push();
-   let numParticles = map(rms, 0, 0.3, 0, 1);
-   for (let i = 0; i < numParticles; i++) {
-      if(rms > 0.5) {
-          particles.push(new Particle());
-      }
-   }
+    push();
+    let numParticles = map(rms, 0, 0.3, 0, 1);
+    for (let i = 0; i < numParticles; i++) {
+        let threshold = 0.5;
+        if(song == song3) {
+            threshold = 0.35;
+        }
+        if(rms > threshold) {
+            particles.push(new Particle());
+        }
+    }
 
    for (let i = particles.length - 1; i >= 0; i--) {
       particles[i].update();
@@ -880,7 +884,7 @@ function draw() {
   textAlign(LEFT);
   text('[space] to play/pause', 20, height - 110); 
   text('[←→] left/right arrow keys to switch songs', 20, height - 90); 
-  text('[↑↓] up/down arrow keys to switch visualization', 20, height - 70)
+  text('[↑↓] up/down arrow keys or click to switch visualization', 20, height - 70)
   text('preselected songs: Cat & Dog, Mind, Fireflies', 20, height - 50); 
   text('try uploading your own song to the right', 20, height - 30); 
   text('*only preselected songs will have lyrics', 20, height - 10); 
@@ -1012,4 +1016,15 @@ function playInputAudio() {
   s[s.length] = inputsong; 
   song = s[s.length - 1]; 
   song.play(); 
+}
+
+function mouseClicked() {
+    if (v == visualization.length - 1) {
+      v = 0; 
+    }
+    else {
+      v++;
+    }
+    f = visualization[v].flower; 
+    p = visualization[v].particles; 
 }
